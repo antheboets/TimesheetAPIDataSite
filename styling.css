@@ -1,6 +1,29 @@
 .jsonBlock{
 	background-color: grey;
+	width: 50%;
 }
+
+.navDiv{
+	padding: 10px;
+	background-color: grey; 
+	position: fixed;
+	width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
 .navBt{
-	
+	font-size: 15px;
+	padding: 10px;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.navBt:hover{
+	background-color: LightGrey; 
+}
+
+.title{
+	margin-top: 50px; 
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 30px;
 }
