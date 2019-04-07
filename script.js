@@ -9,6 +9,14 @@ class DataObj{
     this.id = id;
     this.data = getSeed(file);
   }
+  makeJsonBlock(){
+    this.data.then(function(data){
+      let div = document.createElement("pre");
+      div.classList.add("jsonBlock");
+      div.appendChild(document.createTextNode(data));
+      document.getElementById("content").appendChild(div);
+    });
+  }
 }
 
 class Seed{
@@ -23,6 +31,11 @@ class Seed{
     this.dataObjList.push(new DataObj("roles","role","RoleSeed.json"));
     this.dataObjList.push(new DataObj("Users","user","UserSeed.json"));
   }
+  makePage(){
+    this.dataObjList.forEach(function(e){
+      e.makeJsonBlock();
+    });
+  }
 }
 class Database{
   dataObjList;
@@ -31,30 +44,15 @@ class Database{
   }
 }
 async function getSeed(fileName){ 
-
-   let test = await fetch("http://dtsl.ehb.be/~anthe.boets/TimesheetAPI/DataSeed/"+fileName);
-   let test2 = test.json();
-    /*$.ajax({
-    async: true,
-    crossDomain: true,
-    method: "GET",
-    url: "http://dtsl.ehb.be/~anthe.boets/TimesheetAPI/DataSeed/"+fileName,
-    success: function(data){
-      console.log(data);
-      return JSON.stringify(data, null, 4);
-    },
-    error: function(data){
-      console.log(data)
-      return null;
-    },
-  });*/
-  console.log(test);
-  console.log(test2);
-  return test2;
+  let response = await fetch("http://dtsl.ehb.be/~anthe.boets/TimesheetAPI/DataSeed/"+fileName);
+  let data = await response.json();
+  //console.log(data);
+  data = JSON.stringify(data, null, 4);
+  //console.log(data);
+  return data;
 }
 
 let seed = new Seed();
-
 let database = new Database();
 
 console.log(seed);
@@ -62,11 +60,12 @@ console.log(database);
 
 $(document).ready(function() {
 
-sleep(1000);
+//sleep(1000);
+/*
 console.log("test");
 console.log(seed);
 console.log(database);
-
+*/
 
 
   let menu;
@@ -80,18 +79,14 @@ console.log(database);
     menu = "Seed";
   }
 
-  console.log(menu);
+  //console.log(menu);
  	
 
-  let controllers = [];
-  controllers.push("");
-  /*
- 	for(let i = 0; i < dataSeedFiles.length; i++){
-    getSeed(dataSeedFiles[i]);
- 	}
+  //let controllers = [];
+  //controllers.push("");
+
   createContente();
-  */
- 
+   
   function getTable(route){ 
     $.ajax({
       async: true,
@@ -125,7 +120,9 @@ console.log(database);
     document.getElementById("content").appendChild(div);
   }
   function createContente(){
-
+    let content = document.getElementById("content");
+    //content.innerHTML = "";
+    seed.makePage(); 
   }
   function getCookie(cname) {
     var name = cname + "=";
@@ -142,7 +139,4 @@ console.log(database);
     }
     return "";
   }
-
-  
-
 });
