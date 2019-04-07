@@ -1,29 +1,55 @@
+body {
+	margin: 0px;
+}
+
+#page {
+
+	margin-top: 4%;
+	margin-left: 8px; 
+
+}
+
 .jsonBlock{
 	background-color: grey;
 	width: 50%;
 }
 
 .navDiv{
-	padding: 10px;
+	padding: 0.5%;
 	background-color: grey; 
 	position: fixed;
 	width: 100%;
-    top: 0px;
-    left: 0px;
+    top: 0%;
+}
+
+.title{
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 15px;
+	display: inline-block;
+	margin: 0% 1% 0% 0.5%;
 }
 
 .navBt{
 	font-size: 15px;
-	padding: 10px;
+	padding: 0.45%;
 	font-family: 'Noto Sans', sans-serif;
+	cursor: pointer;
+	border: 1px solid black;
 }
 
 .navBt:hover{
 	background-color: LightGrey; 
 }
 
-.title{
-	margin-top: 50px; 
-	font-family: 'Noto Sans', sans-serif;
-	font-size: 30px;
+.menuTable{
+	display: block;
+	background-color: grey; 
+	position: sticky;
+	top: 3%;
+	float: right;
+	margin-top: 0.10%; 
 }
+
+.active{
+	background-color: LightGrey; 
+}	
