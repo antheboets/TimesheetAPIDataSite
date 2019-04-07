@@ -1,6 +1,73 @@
-.jsonBlock{
-	background-color: grey;
+body {
+	margin: 0px;
+	background-color: #cccccc;
 }
+
+#page {
+
+	margin-top: 4%;
+	margin-left: 8px; 
+
+}
+
+.jsonBlock{
+	background-color: #999999;
+	width: 50%;
+}
+
+.navDiv{
+	padding: 0.5%;
+	background-color: #999999; 
+	position: fixed;
+	width: 100%;
+    top: 0%;
+    z-index: 2;
+}
+
+.title{
+	font-family: 'Noto Sans', sans-serif;
+	font-size: 15px;
+	display: inline-block;
+	margin: 0% 1% 0% 0.5%;
+}
+
 .navBt{
-	
+	font-size: 15px;
+	padding: 0.45%;
+	font-family: 'Noto Sans', sans-serif;
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.navBt:hover{
+	background-color: LightGrey; 
+}
+
+.menuTable{
+	display: block;
+	background-color: white; 
+	position: sticky;
+	top: 3.2%;
+	float: right;
+	margin-top: 0.10%; 
+}
+
+.menuTable table{
+	border-spacing: 0px;
+}
+
+.menuTable td{
+	font-family: 'Noto Sans', sans-serif;
+	color: #8195c4;
+	padding: 3px 4px 3px 4px; 
+	text-align: right;
+}
+
+.active{
+	background-color: LightGrey; 
+}	
+
+.selected{
+	background-color: #8195c4 !important; 
+	color: white !important;
 }

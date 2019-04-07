@@ -12,14 +12,41 @@
 	<link rel="mask-icon" href="img/fav/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
+
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> <!-- font-family: 'Noto Sans', sans-serif; --> 
+
 </head>
 <body>
 	<nav>
-		<h1>Timesheet API Seed Data</h1>
-		<div class="navBt" id="seed">Seed</div>
-		<div class="navBt" id="database">Database</div>	
+		<div class="navDiv">
+			<h1 class="title">Timesheet API Seed Data</h1>
+			<span class="navBt active" id="seed">Seed</span>
+			<span class="navBt" id="database">Database</dispanv>	
+		</div>
 	</nav>
 	
-	<div id="content"></div>
+	<div id="page">
+		<div class="menuTable">
+			<table>
+				<tr>
+					<td class="selected">Test1 Test Test</td>
+				</tr>	
+				<tr>
+					<td>Test2</td>
+				</tr>		
+				<tr>
+					<td>Test3</td>
+				</tr>		
+				<tr>
+					<td>Test4</td>
+				</tr>		
+				<tr>
+					<td>Test5</td>
+				</tr>		
+			</table>
+		</div>
+		
+		<div id="content"></div>
+	</div>
 </body>
 </html>
