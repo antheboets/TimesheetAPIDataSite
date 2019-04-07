@@ -1,5 +1,6 @@
 body {
 	margin: 0px;
+	background-color: #cccccc;
 }
 
 #page {
@@ -10,16 +11,17 @@ body {
 }
 
 .jsonBlock{
-	background-color: grey;
+	background-color: #999999;
 	width: 50%;
 }
 
 .navDiv{
 	padding: 0.5%;
-	background-color: grey; 
+	background-color: #999999; 
 	position: fixed;
 	width: 100%;
     top: 0%;
+    z-index: 2;
 }
 
 .title{
@@ -43,13 +45,29 @@ body {
 
 .menuTable{
 	display: block;
-	background-color: grey; 
+	background-color: white; 
 	position: sticky;
-	top: 3%;
+	top: 3.2%;
 	float: right;
 	margin-top: 0.10%; 
+}
+
+.menuTable table{
+	border-spacing: 0px;
+}
+
+.menuTable td{
+	font-family: 'Noto Sans', sans-serif;
+	color: #8195c4;
+	padding: 3px 4px 3px 4px; 
+	text-align: right;
 }
 
 .active{
 	background-color: LightGrey; 
 }	
+
+.selected{
+	background-color: #8195c4 !important; 
+	color: white !important;
+}
