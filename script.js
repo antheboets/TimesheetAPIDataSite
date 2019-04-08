@@ -63,27 +63,17 @@ dataObjListSeed.push(new DataObj("Activities","activity","ActivitySeed.json",get
 dataObjListSeed.push(new DataObj("Companies","company","CompanySeed.json",getSeed));
 dataObjListSeed.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Logs","log","LogSeed.json",getSeed));
-dataObjListSeed.push(new DataObj("Projects","projects","ProjectSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("Projects","project","ProjectSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("roles","role","RoleSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Users","user","UserSeed.json",getSeed));
 let seed = new DataType(dataObjListSeed);
 dataObjListDatabase = [];
-/*
-  dataObjListDatabase.push(new DataObj("Activities","activity","ActivitySeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("Companies","company","CompanySeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("Logs","log","LogSeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("Projects","projects","ProjectSeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("roles","role","RoleSeed.json",getDatabase));
-  dataObjListDatabase.push(new DataObj("Users","user","UserSeed.json",getDatabase));
-*/
 dataObjListDatabase.push(new DataObj("Logs","log","/Log/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Users","user","/User/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Projects","project","/Project/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Activities","activity","/Activity/test",getDatabase));
 let database = new DataType(dataObjListDatabase);
-
-console.log(seed);
-console.log(database);
 
 $(document).ready(function() {
 
