@@ -69,10 +69,10 @@ dataObjListSeed.push(new DataObj("roles","role","RoleSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Users","user","UserSeed.json",getSeed));
 let seed = new DataType(dataObjListSeed);
 dataObjListDatabase = [];
-dataObjListDatabase.push(new DataObj("Logs","log","/Log/test",getDatabase));
-dataObjListDatabase.push(new DataObj("Users","user","/User/test",getDatabase));
-dataObjListDatabase.push(new DataObj("Projects","project","/Project/test",getDatabase));
-dataObjListDatabase.push(new DataObj("Activities","activity","/Activity/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Logs","log","Log/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Users","user","User/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Projects","project","Project/test",getDatabase));
+dataObjListDatabase.push(new DataObj("Activities","activity","Activity/test",getDatabase));
 let database = new DataType(dataObjListDatabase);
 
 $(document).ready(function() {
