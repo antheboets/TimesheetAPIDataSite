@@ -3,11 +3,11 @@ class DataObj{
   id;
   file;
   data;
-  constructor(title,id, file, get){
+  constructor(title,id, file, getData){
     this.title = title;
     this.file = file;
     this.id = id;
-    this.data = get(file);
+    this.data = getData(file);
   }
   makeJsonBlock(){
     let div = document.createElement("div");
@@ -63,21 +63,21 @@ dataObjListSeed.push(new DataObj("Activities","activity","ActivitySeed.json",get
 dataObjListSeed.push(new DataObj("Companies","company","CompanySeed.json",getSeed));
 dataObjListSeed.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Logs","log","LogSeed.json",getSeed));
-//dataObjListSeed.push(new DataObj("Projects","projects","ProjectSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("Projects","projects","ProjectSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("roles","role","RoleSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Users","user","UserSeed.json",getSeed));
 let seed = new DataType(dataObjListSeed);
 dataObjListDatabase = [];
 /*
-dataObjListDatabase.push(new DataObj("Activities","activity","ActivitySeed.json",getDatabase));
-dataObjListDatabase.push(new DataObj("Companies","company","CompanySeed.json",getDatabase));
-dataObjListDatabase.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getDatabase));
-dataObjListDatabase.push(new DataObj("Logs","log","LogSeed.json",getDatabase));
-//dataObjListDatabase.push(new DataObj("Projects","projects","ProjectSeed.json",getDatabase));
-dataObjListDatabase.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getDatabase));
-dataObjListDatabase.push(new DataObj("roles","role","RoleSeed.json",getDatabase));
-dataObjListDatabase.push(new DataObj("Users","user","UserSeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("Activities","activity","ActivitySeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("Companies","company","CompanySeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("Logs","log","LogSeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("Projects","projects","ProjectSeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("roles","role","RoleSeed.json",getDatabase));
+  dataObjListDatabase.push(new DataObj("Users","user","UserSeed.json",getDatabase));
 */
 dataObjListDatabase.push(new DataObj("Logs","log","/Log/test",getDatabase));
 let database = new DataType(dataObjListDatabase);
