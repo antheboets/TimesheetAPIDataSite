@@ -3,75 +3,93 @@ class DataObj{
   id;
   file;
   data;
-  constructor(title,id, file){
+  constructor(title,id, file, get){
     this.title = title;
     this.file = file;
     this.id = id;
-    this.data = getSeed(file);
+    this.data = get(file);
   }
   makeJsonBlock(){
+    let div = document.createElement("div");
+    let h2 = document.createElement("h2");
+    h2.appendChild(document.createTextNode(this.title));
+    h2.id = this.id;
     this.data.then(function(data){
-      let div = document.createElement("pre");
-      div.classList.add("jsonBlock");
-      div.appendChild(document.createTextNode(data));
+      let pre = document.createElement("pre");
+      pre.classList.add("jsonBlock");
+      pre.appendChild(document.createTextNode(data));
+      div.appendChild(h2);
+      div.appendChild(pre);
       document.getElementById("content").appendChild(div);
     });
   }
+  makeTable(){
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
+    let a = document.createElement("a");
+    a.href = "http://dtsl.ehb.be/~anthe.boets/timesheetAPI/index.html#" + this.id;
+    a.appendChild(document.createTextNode(this.title));
+    td.appendChild(a);
+    tr.appendChild(td);
+    document.getElementById("table").appendChild(tr);
+  }
 }
-
-class Seed{
+class DataType{
   dataObjList = [];
-  constructor(){
-    this.dataObjList.push(new DataObj("Activities","activity","ActivitySeed.json"));
-    this.dataObjList.push(new DataObj("companies","company","CompanySeed.json"));
-    this.dataObjList.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json"));
-    this.dataObjList.push(new DataObj("Logs","log","LogSeed.json"));
-    //this.dataObjList.push(new DataObj("Projects","projects","ProjectSeed.json"));
-    this.dataObjList.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json"));
-    this.dataObjList.push(new DataObj("roles","role","RoleSeed.json"));
-    this.dataObjList.push(new DataObj("Users","user","UserSeed.json"));
+  constructor(dataObjList){
+    this.dataObjList = dataObjList
   }
   makePage(){
     this.dataObjList.forEach(function(e){
       e.makeJsonBlock();
+      e.makeTable();
     });
-  }
-}
-class Database{
-  dataObjList;
-  constructor(){
-    
   }
 }
 async function getSeed(fileName){ 
   let response = await fetch("http://dtsl.ehb.be/~anthe.boets/TimesheetAPI/DataSeed/"+fileName);
   let data = await response.json();
-  //console.log(data);
   data = JSON.stringify(data, null, 4);
-  //console.log(data);
   return data;
 }
-
-let seed = new Seed();
-let database = new Database();
+async function getDatabase(fileName){ 
+  let response = await fetch("https://ehbpmagroup6.azurewebsites.net/"+fileName);
+  let data = await response.json();
+  data = JSON.stringify(data, null, 4);
+  return data;
+}
+dataObjListSeed = [];
+dataObjListSeed.push(new DataObj("Activities","activity","ActivitySeed.json",getSeed));
+dataObjListSeed.push(new DataObj("Companies","company","CompanySeed.json",getSeed));
+dataObjListSeed.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("Logs","log","LogSeed.json",getSeed));
+//dataObjListSeed.push(new DataObj("Projects","projects","ProjectSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("roles","role","RoleSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("Users","user","UserSeed.json",getSeed));
+let seed = new DataType(dataObjListSeed);
+dataObjListDatabase = [];
+/*
+dataObjListDatabase.push(new DataObj("Activities","activity","ActivitySeed.json",getDatabase));
+dataObjListDatabase.push(new DataObj("Companies","company","CompanySeed.json",getDatabase));
+dataObjListDatabase.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWorkweekSeed.json",getDatabase));
+dataObjListDatabase.push(new DataObj("Logs","log","LogSeed.json",getDatabase));
+//dataObjListDatabase.push(new DataObj("Projects","projects","ProjectSeed.json",getDatabase));
+dataObjListDatabase.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getDatabase));
+dataObjListDatabase.push(new DataObj("roles","role","RoleSeed.json",getDatabase));
+dataObjListDatabase.push(new DataObj("Users","user","UserSeed.json",getDatabase));
+*/
+dataObjListDatabase.push(new DataObj("Logs","log","/Log/test",getDatabase));
+let database = new DataType(dataObjListDatabase);
 
 console.log(seed);
 console.log(database);
 
 $(document).ready(function() {
 
-//sleep(1000);
-/*
-console.log("test");
-console.log(seed);
-console.log(database);
-*/
-
-
   let menu;
   if(getCookie("menu")){
     menu = getCookie("menu");
-    console.log("true");
   }
   else{
     console.log("false");
@@ -79,13 +97,18 @@ console.log(database);
     menu = "Seed";
   }
 
-  //console.log(menu);
- 	
-
-  //let controllers = [];
-  //controllers.push("");
-
-  createContente();
+  document.getElementById("seed").addEventListener("click", function(){
+    document.cookie = "menu=Seed";
+    createContente("Seed",false);
+    menu = "Seed";
+  });
+  document.getElementById("database").addEventListener("click", function(){
+    document.cookie = "menu=Database";
+    createContente("Database",false)
+    menu = "Database";
+  });
+  
+  createContente(menu, true);
    
   function getTable(route){ 
     $.ajax({
@@ -103,15 +126,6 @@ console.log(database);
     });
   }
 
-  function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
   function createJsonBlock(data){
     let text = JSON.stringify(data, null, 4);
     let div = document.createElement("pre");
@@ -119,10 +133,22 @@ console.log(database);
     div.appendChild(document.createTextNode(text));
     document.getElementById("content").appendChild(div);
   }
-  function createContente(){
-    let content = document.getElementById("content");
-    //content.innerHTML = "";
-    seed.makePage(); 
+  function createContente(newMenu, force){
+    if(menu != newMenu || force){
+      console.log("change");
+      document.getElementById("content").innerHTML = "";
+      document.getElementById("table").innerHTML = "";
+      document.getElementById(menu.toLowerCase()).classList.remove("active");
+      document.getElementById(newMenu.toLowerCase()).classList.add("active");
+      switch(newMenu){
+        case "Seed":
+        seed.makePage();
+        break;
+        case "Database":
+        database.makePage();
+        break;
+      }
+    }
   }
   function getCookie(cname) {
     var name = cname + "=";
