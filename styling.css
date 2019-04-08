@@ -4,10 +4,8 @@ body {
 }
 
 #page {
-
 	margin-top: 4%;
 	margin-left: 8px; 
-
 }
 
 .jsonBlock{
@@ -54,13 +52,13 @@ body {
 
 .menuTable table{
 	border-spacing: 0px;
+	border-left: 1px solid black;
 }
 
 .menuTable td{
 	font-family: 'Noto Sans', sans-serif;
 	color: #8195c4;
 	padding: 3px 4px 3px 4px; 
-	text-align: right;
 }
 
 .active{
@@ -70,4 +68,9 @@ body {
 .selected{
 	background-color: #8195c4 !important; 
 	color: white !important;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
 }
