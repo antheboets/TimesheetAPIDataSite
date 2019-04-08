@@ -99,33 +99,9 @@ $(document).ready(function() {
   });
   
   createContente(menu, true);
-   
-  function getTable(route){ 
-    $.ajax({
-      async: true,
-      crossDomain: true,
-      method: "GET",
-      url: "https://ehbpmagroup6.azurewebsites.net"+route,
-      success: function(data){
-        console.log(data);
-        createJsonBlock(data);
-      },
-      error: function(data){
-        console.log(data)
-      },
-    });
-  }
 
-  function createJsonBlock(data){
-    let text = JSON.stringify(data, null, 4);
-    let div = document.createElement("pre");
-    div.classList.add("jsonBlock");
-    div.appendChild(document.createTextNode(text));
-    document.getElementById("content").appendChild(div);
-  }
   function createContente(newMenu, force){
     if(menu != newMenu || force){
-      console.log("change");
       document.getElementById("content").innerHTML = "";
       document.getElementById("table").innerHTML = "";
       document.getElementById(menu.toLowerCase()).classList.remove("active");
