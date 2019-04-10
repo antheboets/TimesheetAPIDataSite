@@ -58,7 +58,7 @@ h2{
 
 .menuTable{
 	display: inherit;
-	background-color: #E1E2E2; 
+	background-color: #E1E2E2;
 	position: sticky;
 	top: 4.5%;
 	float: right;
@@ -66,29 +66,23 @@ h2{
     height: 100%;
     padding-bottom: 100%;
 	border-left: 1px solid #FB8122;
-
-}
-
-.menuTable table{
-	border-spacing: 0px;
-}
-
-.menuTable td{
-	font-family: 'Noto Sans', sans-serif;
-	color: #FB8122;
-	padding: 3px 4px 3px 4px; 
-    font-size: 120%;
+	border-top: 10px solid #FB8122;
+	width: 20em;
 }
 
 .active{
 	background-color: #FB8122; 
 }	
 
-.selected{
-	background-color: #FB8122 !important; 
+.navTableLink{
+	font-family: 'Noto Sans', sans-serif;
+	color: #FB8122;
+	padding: 3px 4px 3px 4px; 
+    font-size: 120%;
+	width: 16.25em;
 }
-
-.selected a{
+.navTableLink:hover{
+	background-color: #FB8122 !important; 
 	color: #E1E2E2 !important;
 }
 

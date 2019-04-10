@@ -24,14 +24,13 @@ class DataObj{
     });
   }
   makeTable(){
-    let tr = document.createElement("tr");
-    let td = document.createElement("td");
+    let div = document.createElement("div");
     let a = document.createElement("a");
     a.href = "http://dtsl.ehb.be/~anthe.boets/timesheetAPI/index.html#" + this.id;
+    div.classList.add("navTableLink");
     a.appendChild(document.createTextNode(this.title));
-    td.appendChild(a);
-    tr.appendChild(td);
-    document.getElementById("table").appendChild(tr);
+    div.appendChild(a);
+    document.getElementById("table").appendChild(div);
   }
 }
 class DataType{
@@ -44,6 +43,17 @@ class DataType{
       e.makeJsonBlock();
       e.makeTable();
     });
+    let $nav = $('#nav');
+    let paddingTop = $nav.css("padding-top");
+    let height = $nav.css("height");
+    let paddingBottom = $nav.css("padding-bottom");
+    console.log(paddingTop + " " + height + " " + paddingBottom);
+    paddingTop = parseInt(paddingTop,10);
+    height = parseInt(height,10);
+    paddingBottom = parseInt(paddingBottom,10);
+    console.log(paddingTop + " " + height + " " + paddingBottom);
+    console.log(paddingTop + height + paddingBottom);
+    $("#table").css("top",paddingTop+height+paddingBottom+"px");
   }
 }
 async function getSeed(fileName){ 
@@ -65,7 +75,7 @@ dataObjListSeed.push(new DataObj("DefaultWorkweeks","defaultworkweek","DefaultWo
 dataObjListSeed.push(new DataObj("Logs","log","LogSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Projects","project","ProjectSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("ProjectUsers","projectuser","ProjectUserSeed.json",getSeed));
-dataObjListSeed.push(new DataObj("roles","role","RoleSeed.json",getSeed));
+dataObjListSeed.push(new DataObj("Roles","role","RoleSeed.json",getSeed));
 dataObjListSeed.push(new DataObj("Users","user","UserSeed.json",getSeed));
 let seed = new DataType(dataObjListSeed);
 dataObjListDatabase = [];
