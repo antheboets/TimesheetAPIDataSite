@@ -1,25 +1,39 @@
-body {
+body,hmtl {
 	margin: 0px;
-	background-color: #cccccc;
+	background-color: #2a2e33;
 }
 
 #page {
 	margin-top: 4%;
-	margin-left: 8px; 
+	margin-left: 13px; 
 }
 
 .jsonBlock{
-	background-color: #999999;
+	background-color: #1D2228;
 	width: 50%;
+    color: 	#E1E2E2;
+    font-size: 15px;
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 15px; 
+}
+
+h2{
+    
+	font-family: 'Noto Sans', sans-serif;
+    color: 	#E1E2E2;
+    margin-left: 20px;
+    
 }
 
 .navDiv{
-	padding: 0.5%;
-	background-color: #999999; 
+	padding: 0.75%;
+	background-color: #1D2228; 
 	position: fixed;
 	width: 100%;
     top: 0%;
     z-index: 2;
+    color: #E1E2E2;
 }
 
 .title{
@@ -27,47 +41,55 @@ body {
 	font-size: 15px;
 	display: inline-block;
 	margin: 0% 1% 0% 0.5%;
+    font-size: 110%;
 }
 
 .navBt{
-	font-size: 15px;
+	font-size: 110%;
 	padding: 0.45%;
 	font-family: 'Noto Sans', sans-serif;
 	cursor: pointer;
-	border: 1px solid black;
+	border: 1px solid #FB8122;
 }
 
 .navBt:hover{
-	background-color: LightGrey; 
+	background-color: #FB8122; 
 }
 
 .menuTable{
-	display: block;
-	background-color: white; 
+	display: inherit;
+	background-color: #E1E2E2; 
 	position: sticky;
-	top: 3.2%;
+	top: 4.5%;
 	float: right;
 	margin-top: 0.10%; 
+    height: 100%;
+    padding-bottom: 100%;
+	border-left: 1px solid #FB8122;
+
 }
 
 .menuTable table{
 	border-spacing: 0px;
-	border-left: 1px solid black;
 }
 
 .menuTable td{
 	font-family: 'Noto Sans', sans-serif;
-	color: #8195c4;
+	color: #FB8122;
 	padding: 3px 4px 3px 4px; 
+    font-size: 120%;
 }
 
 .active{
-	background-color: LightGrey; 
+	background-color: #FB8122; 
 }	
 
 .selected{
-	background-color: #8195c4 !important; 
-	color: white !important;
+	background-color: #FB8122 !important; 
+}
+
+.selected a{
+	color: #E1E2E2 !important;
 }
 
 a{
