@@ -47,12 +47,9 @@ class DataType{
     let paddingTop = $nav.css("padding-top");
     let height = $nav.css("height");
     let paddingBottom = $nav.css("padding-bottom");
-    console.log(paddingTop + " " + height + " " + paddingBottom);
     paddingTop = parseInt(paddingTop,10);
     height = parseInt(height,10);
     paddingBottom = parseInt(paddingBottom,10);
-    console.log(paddingTop + " " + height + " " + paddingBottom);
-    console.log(paddingTop + height + paddingBottom);
     $("#table").css("top",paddingTop+height+paddingBottom+"px");
   }
 }
