@@ -105,6 +105,10 @@ $(document).ready(function() {
     menu = "Database";
   });
   
+  document.getElementById("refresh").addEventListener("click", function(){
+    createContente(menu,true)
+  });
+
   createContente(menu, true);
 
   function createContente(newMenu, force){
